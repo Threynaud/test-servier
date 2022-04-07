@@ -12,7 +12,6 @@ STG_DRUGS_PATH = os.environ.get("STG_DRUGS_PATH")
 def stg_drugs_processing(drugs_file_path):
     """ """
     drugs_df = pd.read_csv(drugs_file_path)
-    drugs_df["drug_lowercase"] = drugs_df["drug"].str.lower()  # Keep raw drug name for restitution
     return drugs_df
 
 

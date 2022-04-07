@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 pandas = "*"
 python-dotenv = "*"
+install = "*"
+python-dateutil = "*"
 
 [dev-packages]
 black = "*"
