@@ -12,6 +12,10 @@ STG_DRUGS_PATH = os.environ.get("STG_DRUGS_PATH")
 def stg_drugs_processing(drugs_file_path):
     """ """
     drugs_df = pd.read_csv(drugs_file_path)
+
+    # Preprocess drug name
+    drugs_df["drug_preprocessed"] = drugs_df["drug"].str.lower()
+
     return drugs_df
 
 

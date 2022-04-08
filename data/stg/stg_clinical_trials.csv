@@ -1,8 +1,8 @@
-id,scientific_title,date,journal
-NCT04237090,,01/01/2020,Journal of emergency nursing
-NCT04237091,Feasibility of a Randomized Controlled Clinical Trial Comparing the Use of Cetirizine to Replace Diphenhydramine in the Prevention of Reactions Related to Paclitaxel,01/01/2020,Journal of emergency nursing
-NCT03490942,Glucagon Infusion in T1D Patients With Recurrent Severe Hypoglycemia: Effects on Counter-Regulatory Responses,25/05/2020,Journal of emergency nursing
-NCT04189588,Phase 2 Study IV QUZYTTIR™ (Cetirizine Hydrochloride Injection) vs V Diphenhydramine,01/01/2020,Journal of emergency nursing
-NCT04153396,Preemptive Infiltration With Betamethasone and Ropivacaine for Postoperative Pain in Laminoplasty or Laminectomy,01/01/2020,Hôpitaux Universitaires de Genève
-NCT04188184,Tranexamic Acid Versus Epinephrine During Exploratory Tympanotomy,27/04/2020,Journal of emergency nursing
-NCT01967433,Use of Diphenhydramine as an Adjunctive Sedative for Colonoscopy in Patients Chronically on Opioids,01/01/2020,Journal of emergency nursing
+id,scientific_title,date,journal,scientific_title_preprocessed
+NCT04237090,,01/01/2020,Journal of emergency nursing,
+NCT04237091,Feasibility of a Randomized Controlled Clinical Trial Comparing the Use of Cetirizine to Replace Diphenhydramine in the Prevention of Reactions Related to Paclitaxel,01/01/2020,Journal of emergency nursing,feasibility of a randomized controlled clinical trial comparing the use of cetirizine to replace diphenhydramine in the prevention of reactions related to paclitaxel
+NCT03490942,Glucagon Infusion in T1D Patients With Recurrent Severe Hypoglycemia: Effects on Counter-Regulatory Responses,25/05/2020,Journal of emergency nursing,glucagon infusion in t1d patients with recurrent severe hypoglycemia effects on counterregulatory responses
+NCT04189588,Phase 2 Study IV QUZYTTIR™ (Cetirizine Hydrochloride Injection) vs V Diphenhydramine,01/01/2020,Journal of emergency nursing,phase 2 study iv quzyttirtm cetirizine hydrochloride injection vs v diphenhydramine
+NCT04153396,Preemptive Infiltration With Betamethasone and Ropivacaine for Postoperative Pain in Laminoplasty or Laminectomy,01/01/2020,Hôpitaux Universitaires de Genève,preemptive infiltration with betamethasone and ropivacaine for postoperative pain in laminoplasty or laminectomy
+NCT04188184,Tranexamic Acid Versus Epinephrine During Exploratory Tympanotomy,27/04/2020,Journal of emergency nursing,tranexamic acid versus epinephrine during exploratory tympanotomy
+NCT01967433,Use of Diphenhydramine as an Adjunctive Sedative for Colonoscopy in Patients Chronically on Opioids,01/01/2020,Journal of emergency nursing,use of diphenhydramine as an adjunctive sedative for colonoscopy in patients chronically on opioids

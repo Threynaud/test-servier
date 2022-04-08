@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from dotenv import load_dotenv
 
-from data_formating import normalize_date, remove_bytes
+from data_formating import normalize_date, remove_bytes, preprocess_title
 
 load_dotenv()
 
@@ -15,7 +15,7 @@ def stg_clinical_trials_processing(clinical_trials_file_path):
     """ """
     clinical_trials_df = pd.read_csv(clinical_trials_file_path)
 
-    # Clean strings
+    # Clean strings from bytes like characters
     clinical_trials_df["scientific_title"] = clinical_trials_df["scientific_title"].apply(lambda x: remove_bytes(x))
     clinical_trials_df["journal"] = clinical_trials_df["journal"].astype(str).apply(lambda x: remove_bytes(x))
 
@@ -36,8 +36,11 @@ def stg_clinical_trials_processing(clinical_trials_file_path):
         .reset_index()
     )
     clinical_trials_df = clinical_trials_df[["id", "scientific_title", "date", "journal"]]
-    print(clinical_trials_df["journal"].isna())
-    print(clinical_trials_df)
+
+    # Preprocess title
+    clinical_trials_df["scientific_title_preprocessed"] = clinical_trials_df["scientific_title"].apply(
+        lambda x: preprocess_title(x)
+    )
 
     return clinical_trials_df
 
