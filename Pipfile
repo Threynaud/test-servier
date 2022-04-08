@@ -9,6 +9,7 @@ python-dotenv = "*"
 install = "*"
 python-dateutil = "*"
 unidecode = "*"
+apache-airflow = "*"
 
 [dev-packages]
 black = "*"
