@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from dotenv import load_dotenv
 
-from data_formating import DATE_FORMAT, preprocess_title
+from data_formatting import DATE_FORMAT, preprocess_title
 
 load_dotenv()
 
