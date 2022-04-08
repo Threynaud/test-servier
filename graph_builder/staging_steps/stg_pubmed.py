@@ -18,7 +18,6 @@ def stg_pubmed_processing(pubmed_csv_path, pubmed_json_path):
     base_pubmed_csv_df = pd.read_csv(pubmed_csv_path)
     base_pubmed_json_df = pd.read_csv(pubmed_json_path)
     stg_pubmed_df = pd.concat([base_pubmed_csv_df, base_pubmed_json_df])
-    stg_pubmed_df = stg_pubmed_df.infer_objects()
 
     return stg_pubmed_df
 
