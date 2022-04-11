@@ -1,3 +1,8 @@
+"""
+Step: clinical_trials.csv -> stg_clinical_trials.csv
+"""
+
+
 import os
 
 import pandas as pd
@@ -11,8 +16,17 @@ CLINICAL_TRIALS_INPUT_PATH = os.environ.get("CLINICAL_TRIALS_INPUT_PATH")
 STG_CLINICAL_TRIALS_PATH = os.environ.get("STG_CLINICAL_TRIALS_PATH")
 
 
-def stg_clinical_trials_processing(clinical_trials_file_path):
-    """ """
+def stg_clinical_trials_processing(clinical_trials_file_path: str) -> pd.DataFrame:
+    """Process the source clinical_trials file.
+    Clean the title from bytes like characters, normalize the dates, concatenate duplicates and preprocess the title.
+
+    Args:
+        clinical_trials_file_path: Path of the source clinical_trials CSV file.
+
+    Returns:
+        Pandas Dataframe containing the processed clinical_trials data.
+
+    """
     clinical_trials_df = pd.read_csv(clinical_trials_file_path)
 
     # Clean strings from bytes like characters
@@ -46,7 +60,14 @@ def stg_clinical_trials_processing(clinical_trials_file_path):
 
 
 def main():
-    """ """
+    """Process the clinical trials source files and write the data into a staging CSV file.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
     stg_clinical_trials_df = stg_clinical_trials_processing(CLINICAL_TRIALS_INPUT_PATH)
     stg_clinical_trials_df.to_csv(STG_CLINICAL_TRIALS_PATH, index=False)
 

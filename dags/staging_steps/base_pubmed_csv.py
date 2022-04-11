@@ -1,3 +1,7 @@
+"""
+Step: pubmed.csv -> base_pubmed_csv.csv
+"""
+
 import os
 
 import pandas as pd
@@ -11,8 +15,18 @@ PUBMED_CSV_INPUT_PATH = os.environ.get("PUBMED_CSV_INPUT_PATH")
 BASE_PUBMED_CSV_PATH = os.environ.get("BASE_PUBMED_CSV_PATH")
 
 
-def base_pubmed_csv_processing(pubmed_file_path):
-    """ """
+def base_pubmed_csv_processing(pubmed_file_path: str) -> pd.DataFrame:
+    """Process the PubMed CSV file by normalizing the date and adding a 'title_preprocessed' column for easier
+    drugs recovery.
+
+    Args:
+        pubmed_file_path: Path of a raw PubMed CSV file.
+
+    Returns:
+        Pandas Dataframe storing the processed CSV file.
+
+    """
+
     pubmed_df = pd.read_csv(pubmed_file_path)
 
     # Normalize date
@@ -25,7 +39,14 @@ def base_pubmed_csv_processing(pubmed_file_path):
 
 
 def main():
-    """ """
+    """Process the PubMed CSV file and write the result in a base CSV file.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
     base_pubmed_df = base_pubmed_csv_processing(PUBMED_CSV_INPUT_PATH)
     base_pubmed_df.to_csv(BASE_PUBMED_CSV_PATH, index=False)
 
