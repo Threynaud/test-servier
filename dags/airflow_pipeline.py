@@ -2,19 +2,10 @@ from datetime import datetime
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from graph_builder.marts_steps import (
-    fct_drugs_graph,
-    int_drugs_clinical_trials_deps,
-    int_drugs_pubmed_deps,
-)
-from graph_builder.output_step import drugs_graph_to_json
-from graph_builder.staging_steps import (
-    base_pubmed_csv,
-    base_pubmed_json,
-    stg_clinical_trials,
-    stg_drugs,
-    stg_pubmed,
-)
+
+from marts_steps import fct_drugs_graph, int_drugs_clinical_trials_deps, int_drugs_pubmed_deps
+from output_step import drugs_graph_to_json
+from staging_steps import base_pubmed_csv, base_pubmed_json, stg_clinical_trials, stg_drugs, stg_pubmed
 
 dag = DAG(
     dag_id="drugs_graph_building_pipeline",

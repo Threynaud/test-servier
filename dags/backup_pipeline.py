@@ -2,14 +2,15 @@
 Since I have troubles running Airflow locally, I added this small python script to run all the steps of the pipeline
 at once. This is not production quality code, only a utility!
 """
+# TODO: Make a CLI of this
 
-from graph_builder.marts_steps import (
+from marts_steps import (
     fct_drugs_graph,
     int_drugs_clinical_trials_deps,
     int_drugs_pubmed_deps,
 )
-from graph_builder.output_step import drugs_graph_to_json
-from graph_builder.staging_steps import (
+from output_step import drugs_graph_to_json
+from staging_steps import (
     base_pubmed_csv,
     base_pubmed_json,
     stg_clinical_trials,

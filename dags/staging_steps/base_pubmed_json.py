@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from dotenv import load_dotenv
 
-from data_formatting import DATE_FORMAT, preprocess_title
+from staging_steps.data_formatting import DATE_FORMAT, preprocess_title
 
 load_dotenv()
 
@@ -25,9 +25,7 @@ def base_pubmed_json_processing(pubmed_file_path):
     pubmed_df["id"] = pubmed_df["id"].astype(int)
 
     # # Preprocess title
-    pubmed_df["title_preprocessed"] = pubmed_df["title"].apply(
-        lambda x: preprocess_title(x)
-    )
+    pubmed_df["title_preprocessed"] = pubmed_df["title"].apply(lambda x: preprocess_title(x))
 
     return pubmed_df
 

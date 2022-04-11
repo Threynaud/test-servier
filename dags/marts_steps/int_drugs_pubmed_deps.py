@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from dotenv import load_dotenv
 
-from utils import load_drugs_lookup, find_drugs_in_title, dependency_formatter
+from marts_steps.utils import load_drugs_lookup, find_drugs_in_title, dependency_formatter
 
 load_dotenv()
 
