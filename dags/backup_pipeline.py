@@ -1,6 +1,6 @@
 """
 Since I have troubles running Airflow locally, I added this small python script to run all the steps of the pipeline
-at once. This is not production quality code, only a utility!
+at once. This is not production quality code, neither a 'pipeline' per se, only a utility!
 """
 # TODO: Make a CLI of this
 
