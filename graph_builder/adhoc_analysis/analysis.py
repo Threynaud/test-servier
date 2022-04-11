@@ -11,9 +11,13 @@ OUTPUT_DRUGS_GRAPH_JSON_PATH = os.environ.get("OUTPUT_DRUGS_GRAPH_JSON_PATH")
 
 def get_top_journals(output_drugs_graph_json_path):
     df = pd.read_json(output_drugs_graph_json_path, convert_dates=False)
-    journal_counts_df = df.groupby("journal")["drug_name"].nunique().reset_index(name="count")
+    journal_counts_df = (
+        df.groupby("journal")["drug_name"].nunique().reset_index(name="count")
+    )
 
-    top_journals_df = journal_counts_df.loc[journal_counts_df["count"] == journal_counts_df["count"].max()]
+    top_journals_df = journal_counts_df.loc[
+        journal_counts_df["count"] == journal_counts_df["count"].max()
+    ]
     top_journals_df.reset_index(drop=True, inplace=True)
 
     return top_journals_df

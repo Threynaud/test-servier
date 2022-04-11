@@ -18,7 +18,9 @@ def output_processing(fct_drugs_deps_path):
 def main():
     """ """
     fct_drugs_deps_df = output_processing(FCT_DRUGS_DEPS_PATH)
-    fct_drugs_deps_df.to_json(OUTPUT_DRUGS_GRAPH_JSON_PATH, orient="records", indent=2, force_ascii=False)
+    fct_drugs_deps_df.to_json(
+        OUTPUT_DRUGS_GRAPH_JSON_PATH, orient="records", indent=2, force_ascii=False
+    )
 
 
 if __name__ == "__main__":

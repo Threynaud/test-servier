@@ -21,7 +21,9 @@ def normalize_date(date_str):
 
 def remove_bytes(my_str):
     my_str = re.sub(r"(\s*(\\x)\w+\s*)+", " ", my_str)
-    my_str = my_str.strip()  # Remove potential space at the end of the string introduced by the operation above.
+    my_str = (
+        my_str.strip()
+    )  # Remove potential space at the end of the string introduced by the operation above.
     return my_str
 
 

@@ -1,7 +1,14 @@
 import pandas as pd
 
 
-RELATION_ATTRIBUTES = ["drug_atcode", "drug_name", "relation_type", "ref_id", "date", "journal"]
+RELATION_ATTRIBUTES = [
+    "drug_atcode",
+    "drug_name",
+    "relation_type",
+    "ref_id",
+    "date",
+    "journal",
+]
 
 
 def load_drugs_lookup(stg_drugs_file):
@@ -37,7 +44,9 @@ def dependency_formatter(ref_type, drug, ref):
         "drug_name": drug["drug"],
         "ref_type": ref_type,
         "ref_id": ref["id"],
-        "ref_title": ref["scientific_title"] if ref_type == "clinical_trial" else ref["title"],
+        "ref_title": ref["scientific_title"]
+        if ref_type == "clinical_trial"
+        else ref["title"],
         "date": ref["date"],
         "journal": ref["journal"],
     }

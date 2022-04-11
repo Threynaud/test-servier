@@ -10,11 +10,12 @@ install = "*"
 python-dateutil = "*"
 unidecode = "*"
 apache-airflow = "*"
+click = "==8.0.2"
 
 [dev-packages]
-black = "*"
 flake8 = "*"
 mypy = "*"
+black = "*"
 
 [requires]
 python_version = "3.9"

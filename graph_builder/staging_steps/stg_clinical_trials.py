@@ -16,11 +16,17 @@ def stg_clinical_trials_processing(clinical_trials_file_path):
     clinical_trials_df = pd.read_csv(clinical_trials_file_path)
 
     # Clean strings from bytes like characters
-    clinical_trials_df["scientific_title"] = clinical_trials_df["scientific_title"].apply(lambda x: remove_bytes(x))
-    clinical_trials_df["journal"] = clinical_trials_df["journal"].astype(str).apply(lambda x: remove_bytes(x))
+    clinical_trials_df["scientific_title"] = clinical_trials_df[
+        "scientific_title"
+    ].apply(lambda x: remove_bytes(x))
+    clinical_trials_df["journal"] = (
+        clinical_trials_df["journal"].astype(str).apply(lambda x: remove_bytes(x))
+    )
 
     # Normalize date
-    clinical_trials_df["date"] = clinical_trials_df["date"].apply(lambda x: normalize_date(x))
+    clinical_trials_df["date"] = clinical_trials_df["date"].apply(
+        lambda x: normalize_date(x)
+    )
 
     # Merge lines if same title and date
     # WARNING: This is an ad_hoc step, this should not be handled this way in prod!! (This is very ugly)
@@ -35,12 +41,14 @@ def stg_clinical_trials_processing(clinical_trials_file_path):
         )
         .reset_index()
     )
-    clinical_trials_df = clinical_trials_df[["id", "scientific_title", "date", "journal"]]
+    clinical_trials_df = clinical_trials_df[
+        ["id", "scientific_title", "date", "journal"]
+    ]
 
     # Preprocess title
-    clinical_trials_df["scientific_title_preprocessed"] = clinical_trials_df["scientific_title"].apply(
-        lambda x: preprocess_title(x)
-    )
+    clinical_trials_df["scientific_title_preprocessed"] = clinical_trials_df[
+        "scientific_title"
+    ].apply(lambda x: preprocess_title(x))
 
     return clinical_trials_df
 

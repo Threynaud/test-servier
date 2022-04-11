@@ -5,24 +5,34 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-INT_DRUGS_CLINICAL_TRIALS_DEPS_PATH = os.environ.get("INT_DRUGS_CLINICAL_TRIALS_DEPS_PATH")
+INT_DRUGS_CLINICAL_TRIALS_DEPS_PATH = os.environ.get(
+    "INT_DRUGS_CLINICAL_TRIALS_DEPS_PATH"
+)
 INT_DRUGS_PUBMED_DEPS_PATH = os.environ.get("INT_DRUGS_PUBMED_DEPS_PATH")
 FCT_DRUGS_DEPS_PATH = os.environ.get("FCT_DRUGS_DEPS_PATH")
 
 
-def fct_drugs_graph_building(int_drugs_clinical_trials_deps_path, int_drugs_pubmed_deps_path):
+def fct_drugs_graph_building(
+    int_drugs_clinical_trials_deps_path, int_drugs_pubmed_deps_path
+):
     """ """
     int_drugs_clinical_trials_deps_df = pd.read_csv(int_drugs_clinical_trials_deps_path)
     int_drugs_pubmed_deps_df = pd.read_csv(int_drugs_pubmed_deps_path)
-    fct_drugs_graph_df = pd.concat([int_drugs_clinical_trials_deps_df, int_drugs_pubmed_deps_df])
+    fct_drugs_graph_df = pd.concat(
+        [int_drugs_clinical_trials_deps_df, int_drugs_pubmed_deps_df]
+    )
 
     return fct_drugs_graph_df
 
 
 def main():
     """ """
-    fct_drugs_graph_df = fct_drugs_graph_building(INT_DRUGS_CLINICAL_TRIALS_DEPS_PATH, INT_DRUGS_PUBMED_DEPS_PATH)
-    fct_drugs_graph_df.to_csv(FCT_DRUGS_DEPS_PATH, index=True, index_label="dependency_id")
+    fct_drugs_graph_df = fct_drugs_graph_building(
+        INT_DRUGS_CLINICAL_TRIALS_DEPS_PATH, INT_DRUGS_PUBMED_DEPS_PATH
+    )
+    fct_drugs_graph_df.to_csv(
+        FCT_DRUGS_DEPS_PATH, index=True, index_label="dependency_id"
+    )
 
 
 if __name__ == "__main__":
