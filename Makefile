@@ -10,3 +10,6 @@ run-airflow-pipeline:
 
 run-backup-pipeline:
 	python dags/backup_pipeline.py
+
+run-adhoc-analysis:
+	python adhoc_analysis/analysis.py 
