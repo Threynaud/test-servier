@@ -2,7 +2,6 @@
 Step: clinical_trials.csv -> stg_clinical_trials.csv
 """
 
-
 import os
 
 import pandas as pd
@@ -27,18 +26,23 @@ def stg_clinical_trials_processing(clinical_trials_file_path: str) -> pd.DataFra
         Pandas Dataframe containing the processed clinical_trials data.
 
     """
+
+    print("\n--- Step: clinical_trials.csv -> stg_clinical_trials.csv ---")
     clinical_trials_df = pd.read_csv(clinical_trials_file_path)
 
     # Clean strings from bytes like characters
+    print("Removing bytes like characters from title..")
     clinical_trials_df["scientific_title"] = clinical_trials_df["scientific_title"].apply(lambda x: remove_bytes(x))
     clinical_trials_df["journal"] = clinical_trials_df["journal"].astype(str).apply(lambda x: remove_bytes(x))
 
     # Normalize date
+    print("Normalizing dates..")
     clinical_trials_df["date"] = clinical_trials_df["date"].apply(lambda x: normalize_date(x))
 
     # Merge lines if same title and date
     # WARNING: This is an ad_hoc step, this should not be handled this way in prod!! (This is very ugly)
     # See README for data quality handling!
+    print("Aggregating duplicate lines..")
     clinical_trials_df = (
         clinical_trials_df.groupby(["scientific_title", "date"])
         .agg(
@@ -52,6 +56,7 @@ def stg_clinical_trials_processing(clinical_trials_file_path: str) -> pd.DataFra
     clinical_trials_df = clinical_trials_df[["id", "scientific_title", "date", "journal"]]
 
     # Preprocess title
+    print("Preprocessing title..")
     clinical_trials_df["scientific_title_preprocessed"] = clinical_trials_df["scientific_title"].apply(
         lambda x: preprocess_title(x)
     )
@@ -68,7 +73,9 @@ def main():
     Returns:
         None
     """
+
     stg_clinical_trials_df = stg_clinical_trials_processing(CLINICAL_TRIALS_INPUT_PATH)
+    print("Saving to csv..")
     stg_clinical_trials_df.to_csv(STG_CLINICAL_TRIALS_PATH, index=False)
 
 

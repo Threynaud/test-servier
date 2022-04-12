@@ -28,6 +28,7 @@ def stg_pubmed_processing(pubmed_csv_path: str, pubmed_json_path: str) -> pd.Dat
     # NOTE: In order to reduce useless boilerplate code in favor of readability at this stage I voluntarily chose
     # to 'hardcode' the concatenation of the 2 files like so. In a case where we have more than 2 source files,
     # iterating over these files will of course be the solution.
+    print("\n--- Step: [base_pubmed_csv.csv, base_pubmed_json.csv] -> stg_pubmed.csv ---")
     base_pubmed_csv_df = pd.read_csv(pubmed_csv_path)
     base_pubmed_json_df = pd.read_csv(pubmed_json_path)
     stg_pubmed_df = pd.concat([base_pubmed_csv_df, base_pubmed_json_df])
@@ -45,6 +46,7 @@ def main():
         None
     """
     stg_pubmed_df = stg_pubmed_processing(BASE_PUBMED_CSV_PATH, BASE_PUBMED_JSON_PATH)
+    print("Saving to csv..")
     stg_pubmed_df.to_csv(STG_PUBMED_PATH, index=False)
 
 

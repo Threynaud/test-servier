@@ -26,8 +26,11 @@ def fct_drugs_graph_building(int_drugs_clinical_trials_deps_path: str, int_drugs
 
     """
 
+    print("\n--- Step: [int_drugs_clinical_trials_deps.csv, int_drugs_pubmed_deps.csv] -> fct_drugs_graph.csv ---")
     int_drugs_clinical_trials_deps_df = pd.read_csv(int_drugs_clinical_trials_deps_path)
     int_drugs_pubmed_deps_df = pd.read_csv(int_drugs_pubmed_deps_path)
+
+    print("Concatenating data..")
     fct_drugs_graph_df = pd.concat([int_drugs_clinical_trials_deps_df, int_drugs_pubmed_deps_df], ignore_index=True)
 
     return fct_drugs_graph_df
@@ -43,6 +46,7 @@ def main():
         None
     """
     fct_drugs_graph_df = fct_drugs_graph_building(INT_DRUGS_CLINICAL_TRIALS_DEPS_PATH, INT_DRUGS_PUBMED_DEPS_PATH)
+    print("Saving to csv..")
     fct_drugs_graph_df.to_csv(FCT_DRUGS_DEPS_PATH, index=True, index_label="dependency_id")
 
 

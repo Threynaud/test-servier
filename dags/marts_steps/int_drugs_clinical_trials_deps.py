@@ -31,11 +31,15 @@ def list_dependencies(stg_drugs_file_path: str, stg_clinical_trials_file_path: s
 
     """
 
+    print("\n--- Step: [stg_drugs.csv, stg_clinical_trials.csv] -> int_drugs_clinical_trials_deps.csv ---")
     dependencies = []
 
+    print("Loading drugs..")
     drugs_lookup = load_drugs_lookup(stg_drugs_file_path)
+    print("Loading clinical trials..")
     stg_clinical_trials_df = pd.read_csv(stg_clinical_trials_file_path)
 
+    print("Finding drugs in title..")
     for _, clinical_trial in stg_clinical_trials_df.iterrows():
         drugs_found = find_drugs_in_title(clinical_trial["scientific_title_preprocessed"], drugs_lookup)
         if drugs_found:
@@ -57,6 +61,7 @@ def main():
         None
     """
     int_drugs_clinical_trials_deps_df = list_dependencies(STG_DRUGS_PATH, STG_CLINICAL_TRIALS_PATH)
+    print("Saving dependencies to csv..")
     int_drugs_clinical_trials_deps_df.to_csv(INT_DRUGS_CLINICAL_TRIALS_DEPS_PATH, index=False)
 
 

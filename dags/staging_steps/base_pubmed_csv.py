@@ -26,13 +26,15 @@ def base_pubmed_csv_processing(pubmed_file_path: str) -> pd.DataFrame:
         Pandas Dataframe storing the processed CSV file.
 
     """
-
+    print("\n--- Step: pubmed.csv -> base_pubmed_csv.csv ---")
     pubmed_df = pd.read_csv(pubmed_file_path)
 
     # Normalize date
+    print("Normalizing dates..")
     pubmed_df["date"] = pubmed_df["date"].apply(lambda x: normalize_date(x))
 
     # Preprocess title
+    print("Preprocessing title..")
     pubmed_df["title_preprocessed"] = pubmed_df["title"].apply(lambda x: preprocess_title(x))
 
     return pubmed_df
@@ -48,6 +50,7 @@ def main():
         None
     """
     base_pubmed_df = base_pubmed_csv_processing(PUBMED_CSV_INPUT_PATH)
+    print("Saving to csv..")
     base_pubmed_df.to_csv(BASE_PUBMED_CSV_PATH, index=False)
 
 

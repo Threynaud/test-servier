@@ -29,11 +29,16 @@ def list_dependencies(stg_drugs_file_path: str, stg_pubmed_file_path: str) -> pd
         Pandas Dataframe containing the relationship between drugs and PubMed.
 
     """
+
+    print("\n--- Step: [stg_drugs.csv, stg_pubmed_csv.csv] -> int_drugs_pubmed_deps.csv ---")
     dependencies = []
 
+    print("Loading drugs..")
     drugs_lookup = load_drugs_lookup(stg_drugs_file_path)
+    print("Loading PubMed..")
     stg_pubmed_df = pd.read_csv(stg_pubmed_file_path)
 
+    print("Finding drugs in title..")
     for _, pubmed in stg_pubmed_df.iterrows():
         drugs_found = find_drugs_in_title(pubmed["title_preprocessed"], drugs_lookup)
         if drugs_found:
@@ -55,6 +60,7 @@ def main():
         None
     """
     int_drugs_pubmed_deps_df = list_dependencies(STG_DRUGS_PATH, STG_PUBMED_PATH)
+    print("Saving dependencies to csv..")
     int_drugs_pubmed_deps_df.to_csv(INT_DRUGS_PUBMED_DEPS_PATH, index=False)
 
 
