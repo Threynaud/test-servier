@@ -22,6 +22,8 @@ From the DBT documentation:
 
 > Intermediate models are prefixed with `int_` and live within the marts folder. If your marts models are overly nested + complex to read, splitting some of the logic into one or more intermediate models will help with readability down the line.
 
+For more details see: https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/
+
 Basically, I've made it so it is extremely modular and each step can be reused in other pipelines, either by importing the code of the corresponding step OR by using the data that is stored in a table at the end of the step.
 
 For instance, `int_drugs_pubmed_deps.csv` can be used if we are only interested in the dependencies between drugs and PubMed for further data modeling.
